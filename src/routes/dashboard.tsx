@@ -13,7 +13,7 @@ export const Route = createFileRoute("/dashboard")({
   ] }), component: DashboardRoute,
 });
 
-function DashboardRoute() { return <ProtectedPage>{(user) => <Dashboard userEmail={user.email ?? ""} phone={String(user.user_metadata.phone ?? "")} />}</ProtectedPage>; }
+function DashboardRoute() { return <ProtectedPage>{(user) => <Dashboard userEmail={user.email ?? ""} phone={String(user.user_metadata["phone"] ?? "")} />}</ProtectedPage>; }
 
 function Dashboard({ userEmail, phone }: { userEmail: string; phone: string }) {
   const ensure = useServerFn(ensureMyProfile); const loadLetters = useServerFn(getMyLetters);
